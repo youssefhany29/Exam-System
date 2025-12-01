@@ -1,12 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+package model;
 
-/**
- *
- * @author Youssif
- */
-public class TrueFalseQuestion {
+
+public class TrueFalseQuestion extends Question{
+    private boolean answer;
     
+    public TrueFalseQuestion(String text, int score, Difficulty difficulty, boolean answer) {
+    	super(text, score, difficulty);
+    	this.answer = answer;
+    }
+    
+    public boolean getAnswer() {
+    	return answer;
+    }
+    
+    @Override
+    public boolean checkAnswer(String userAnswer) {
+    	boolean userValue = Boolean.parseBoolean(userAnswer);
+    	return userValue == answer;
+    }
 }
