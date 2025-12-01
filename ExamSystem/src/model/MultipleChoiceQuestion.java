@@ -1,12 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+package model;
 
-/**
- *
- * @author Youssif
- */
-public class MultipleChoiceQuestion {
-    
+public class MultipleChoiceQuestion extends Question{
+	private List<String> options;
+	private String correctAnswer;
+	
+	public MultipleChoiceQuestion(String text, int score, Difficulty difficulty,
+								  List<String> options, String correctAnswer) {
+		super(text, score, difficulty);
+		this.correctAnswer = correctAnswer;
+		this.options = options;
+	}
+	
+	public List<String> getOptions() {
+		return options;
+	}
+	
+	@Override
+	public boolean checkAnswer(String userAnswer) {
+		return userAnswer.equalsIgnoreCase(correctAnswer);
+	}
+	
 }
