@@ -1,7 +1,10 @@
 package UI.common;
 
 import UI.LoginPage;
-import javax.swing.JOptionPane;
+import UI.admin.AdminFrame;
+import UI.student.StudentFrame;
+import model.Admin;
+import model.Student;
 
 public class MainLogin extends LoginPage {
 
@@ -15,26 +18,16 @@ public class MainLogin extends LoginPage {
     }
 
     @Override
-    protected void openAdminPage(String userId) {
-        JOptionPane.showMessageDialog(
-                this,
-                "Admin logged in: " + userId,
-                "Admin Login",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+    protected void openAdminPage(Admin admin) {
+        AdminFrame dashboard = new AdminFrame(admin);
+        dashboard.setVisible(true);
+        this.dispose();
     }
 
     @Override
-    protected void openStudentPage(String userId) {
-        JOptionPane.showMessageDialog(
-                this,
-                "Student logged in: " + userId,
-                "Student Login",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+    protected void openStudentPage(Student student) {
+        StudentFrame dashboard = new StudentFrame(student);
+        dashboard.setVisible(true);
+        this.dispose();
     }
-
 }
-
-    
-
